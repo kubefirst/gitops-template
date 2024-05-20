@@ -1,6 +1,6 @@
 
 data "digitalocean_kubernetes_versions" "versions" {
-  version_prefix = "1.26."
+  version_prefix = "1.27."
 }
 
 resource "digitalocean_kubernetes_cluster" "cluster" {
@@ -35,7 +35,7 @@ resource "vault_generic_secret" "clusters" {
       argocd_manager_sa_token = kubernetes_secret_v1.argocd_manager.data.token
     }
   )
-  depends_on = [ digitalocean_kubernetes_cluster.cluster ]
+  depends_on = [digitalocean_kubernetes_cluster.cluster]
 }
 
 provider "kubernetes" {

@@ -9,14 +9,14 @@ spec:
   project: default
   source:
     repoURL: https://charts.jetstack.io
-    targetRevision: v1.11.0
+    targetRevision: v1.14.4
     helm:
       values: |-
         serviceAccount:
           create: true
           name: cert-manager
           annotations:
-           eks.amazonaws.com/role-arn: 'arn:aws:iam::<AWS_ACCOUNT_ID>:role/cert-manager-<CLUSTER_NAME>'
+            eks.amazonaws.com/role-arn: 'arn:aws:iam::<AWS_ACCOUNT_ID>:role/cert-manager-<CLUSTER_NAME>'
         installCRDs: true
     chart: cert-manager
   destination:

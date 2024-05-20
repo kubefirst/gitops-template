@@ -16,11 +16,11 @@ terraform {
       source = "civo/civo"
     }
     kubernetes = {
-      source = "hashicorp/kubernetes"
+      source  = "hashicorp/kubernetes"
       version = "2.23.0"
     }
     vault = {
-      source = "hashicorp/vault"
+      source  = "hashicorp/vault"
       version = "3.19.0"
     }
   }
@@ -30,7 +30,7 @@ provider "civo" {
 }
 
 locals {
-  cluster_name = "<CLUSTER_NAME>"
+  cluster_name         = "<CLUSTER_NAME>"
   kube_config_filename = "../../../kubeconfig"
 }
 
@@ -45,9 +45,10 @@ resource "civo_firewall" "kubefirst" {
 }
 
 resource "civo_kubernetes_cluster" "kubefirst" {
-  name        = local.cluster_name
-  network_id  = civo_network.kubefirst.id
-  firewall_id = civo_firewall.kubefirst.id
+  name         = local.cluster_name
+  network_id   = civo_network.kubefirst.id
+  firewall_id  = civo_firewall.kubefirst.id
+  cluster_type = "talos"
   pools {
     label      = local.cluster_name
     size       = "<NODE_TYPE>"
