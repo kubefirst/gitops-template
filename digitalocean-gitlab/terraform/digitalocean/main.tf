@@ -32,7 +32,9 @@ locals {
   kube_config_filename = "../../../kubeconfig"
 }
 
-data "digitalocean_kubernetes_versions" "versions" {}
+data "digitalocean_kubernetes_versions" "versions" {
+  version_prefix = "1.28."
+}
 
 resource "digitalocean_kubernetes_cluster" "kubefirst" {
   name    = local.cluster_name
