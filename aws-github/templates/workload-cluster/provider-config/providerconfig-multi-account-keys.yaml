@@ -34,6 +34,10 @@ spec:
       }
       provider "aws" {
         region = "<WORKLOAD_CLUSTER_REGION>"
+        allowed_account_ids = ["<WORKLOAD_CLUSTER_ACCOUNT_ID"]
+        access_key = "<WORKLOAD_ACCOUNT_ACCESS_KEY>"
+        secret_key = "<WORKLOAD_ACCOUNT_SECRET_KEY>"
+        token = "<WORKLOAD_ACCOUNT_TOKEN>"
       }
   credentials:
   - filename: gen-nothing
